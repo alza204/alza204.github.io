@@ -1,727 +1,697 @@
+```html
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Learning Desain Komunikasi Visual (DKV)</title>
-    <!-- Tailwind CSS -->
+    <title>Edukasi DKV - Desain Komunikasi Visual</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        accent: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        body { font-family: 'Inter', sans-serif; }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
         }
-        .page-section {
-            display: none;
-        }
-        .page-section.active {
-            display: block;
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-    <!-- Header & Navigasi Halaman -->
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-xl">
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Logo -->
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 p-0.5 shadow-lg shadow-indigo-500/20">
-                    <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
-                        <i data-lucide="palette" class="w-5 h-5 text-indigo-400"></i>
-                    </div>
-                </div>
-                <div>
-                    <span class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">DKV Hub</span>
-                    <span class="block text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Media Belajar Visual</span>
-                </div>
-            </div>
+            <a href="#" class="flex items-center gap-2 font-bold text-xl text-brand-600 dark:text-brand-500">
+                <i data-lucide="palette" class="w-7 h-7"></i>
+                <span>DKV<span class="text-accent">Space</span></span>
+            </a>
 
-            <!-- Navigasi Desktop (Sub-Halaman Terpisah) -->
-            <nav class="hidden lg:flex items-center space-x-1 text-xs font-medium">
-                <button onclick="navigateTo('home')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all active-nav" data-page="home">Beranda</button>
-                <button onclick="navigateTo('tujuan')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all" data-page="tujuan">Tujuan</button>
-                <button onclick="navigateTo('unsur')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all" data-page="unsur">Unsur-Unsur</button>
-                <button onclick="navigateTo('prinsip')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all" data-page="prinsip">Prinsip Desain</button>
-                <button onclick="navigateTo('branding')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all" data-page="branding">Branding</button>
-                <button onclick="navigateTo('alur')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all" data-page="alur">Alur Komunikasi</button>
-                <button onclick="navigateTo('tools')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all" data-page="tools">Tools Desain</button>
-                <button onclick="navigateTo('karya')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all" data-page="karya">Hasil Karya</button>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#unsur" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Unsur DKV</a>
+                <a href="#prinsip" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Prinsip Desain</a>
+                <a href="#branding" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Branding</a>
+                <a href="#alur" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Alur Kerja</a>
+                <a href="#tools" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Tools</a>
+                <a href="#karya" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Galeri Karya</a>
             </nav>
 
-            <!-- Tombol Menu Mobile -->
-            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            <div class="flex items-center gap-3">
+                <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i data-lucide="moon" id="darkIcon" class="w-5 h-5"></i>
+                    <i data-lucide="sun" id="lightIcon" class="w-5 h-5 hidden"></i>
+                </button>
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
 
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-1">
-            <button onclick="navigateTo('home')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Beranda</button>
-            <button onclick="navigateTo('tujuan')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Tujuan Komunikasi Visual</button>
-            <button onclick="navigateTo('unsur')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Unsur-Unsur DKV</button>
-            <button onclick="navigateTo('prinsip')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Prinsip Desain</button>
-            <button onclick="navigateTo('branding')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Elemen Branding</button>
-            <button onclick="navigateTo('alur')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Alur Komunikasi Visual</button>
-            <button onclick="navigateTo('tools')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Tools Desain</button>
-            <button onclick="navigateTo('karya')" class="w-full text-left px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 rounded-lg">Hasil Karya</button>
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-2">
+            <a href="#unsur" class="mobile-link block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-600">Unsur DKV</a>
+            <a href="#prinsip" class="mobile-link block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-600">Prinsip Desain</a>
+            <a href="#branding" class="mobile-link block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-600">Branding</a>
+            <a href="#alur" class="mobile-link block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-600">Alur Kerja</a>
+            <a href="#tools" class="mobile-link block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-600">Tools</a>
+            <a href="#karya" class="mobile-link block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-600">Galeri Karya</a>
         </div>
     </header>
 
-    <!-- Konten Utama Multi-Halaman -->
-    <main class="flex-grow">
-
-        <!-- HALAMAN 1: BERANDA -->
-        <section id="page-home" class="page-section active py-16 lg:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
-                        <i data-lucide="sparkles" class="w-4 h-4"></i> Modul Pembelajaran DKV Modern
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 text-sm font-semibold border border-brand-100 dark:border-brand-800">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Panduan Lengkap Desain Visual
                     </div>
-                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight text-white">
-                        Mengubah Gagasan Menjadi Bahasa <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Visual Interaktif</span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Mengubah Ide Menjadi <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-accent">Bahasa Visual</span>
                     </h1>
-                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
-                        Selamat datang di portal eksplorasi Desain Komunikasi Visual. Pelajari teori penting, unsur estetika, alur pesan visual, hingga perangkat desain modern melalui navigasi halaman di bawah.
+                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0">
+                        Desain Komunikasi Visual (DKV) adalah ilmu yang mempelajari penyampaian pesan atau informasi menggunakan elemen visual yang kreatif, efektif, dan komunikatif.
                     </p>
-                </div>
-
-                <!-- Grid Navigasi Halaman Cepat -->
-                <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div onclick="navigateTo('tujuan')" class="p-6 bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 cursor-pointer transition-all group">
-                        <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="target" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-lg mb-1">Tujuan Komunikasi</h3>
-                        <p class="text-xs text-slate-400">Pahami alasan mendasar di balik penyampaian pesan gambar & media.</p>
-                    </div>
-
-                    <div onclick="navigateTo('unsur')" class="p-6 bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 cursor-pointer transition-all group">
-                        <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="shapes" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-lg mb-1">Unsur-Unsur DKV</h3>
-                        <p class="text-xs text-slate-400">Garis, bentuk, warna, tipografi, dan tekstur penyusun estetika.</p>
-                    </div>
-
-                    <div onclick="navigateTo('prinsip')" class="p-6 bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 cursor-pointer transition-all group">
-                        <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="compass" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-lg mb-1">Prinsip Desain</h3>
-                        <p class="text-xs text-slate-400">Keseimbangan, irama, hirarki, dan kesatuan tata letak.</p>
-                    </div>
-
-                    <div onclick="navigateTo('branding')" class="p-6 bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 cursor-pointer transition-all group">
-                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <i data-lucide="badge-check" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-lg mb-1">Elemen Branding</h3>
-                        <p class="text-xs text-slate-400">Membangun identitas merek melalui logo dan identitas visual.</p>
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#unsur" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium shadow-lg shadow-brand-500/25 transition transform hover:-translate-y-0.5">
+                            Mulai Belajar DKV
+                        </a>
+                        <a href="#karya" class="px-6 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition">
+                            Lihat Inspirasi Karya
+                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- HALAMAN 2: TUJUAN KOMUNIKASI VISUAL -->
-        <section id="page-tujuan" class="page-section py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div class="border-b border-slate-800 pb-6">
-                    <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest">Halaman 01</span>
-                    <h2 class="text-3xl font-black text-white mt-1">Tujuan Komunikasi Visual</h2>
-                    <p class="text-slate-400 text-sm mt-1">Mengapa karya desain diciptakan dan bagaimana dampaknya kepada audiens.</p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center">
-                            <i data-lucide="info" class="w-5 h-5"></i>
+                <div class="relative flex justify-center">
+                    <div class="absolute -top-10 -bottom-10 -left-10 -right-10 bg-gradient-to-tr from-brand-500/20 to-accent/20 rounded-full filter blur-3xl -z-10"></div>
+                    <div class="w-full max-w-md bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
+                        <div class="flex items-center gap-3 border-b border-slate-100 dark:border-slate-700 pb-3">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="text-xs text-slate-400 ml-auto font-mono">artboard_v1.ai</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white">1. Informatif (Informing)</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Menyampaikan fakta, petunjuk, atau berita secara tepat tanpa keraguan. Contohnya penunjuk jalan (signage), infografis, serta peta navigasi.
-                        </p>
-                    </div>
-
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                            <i data-lucide="zap" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">2. Persuasif (Persuading)</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Mempengaruhi emosi dan keputusan audiens agar mengambil tindakan tertentu. Contohnya poster kampanye, iklan komersial, dan baliho promosional.
-                        </p>
-                    </div>
-
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center">
-                            <i data-lucide="smile" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-white">3. Rekreatif (Entertaining)</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Memberikan nilai hiburan dan estetik yang menyenangkan audiens melalui media seperti komik, animasi, desain gim, dan ilustrasi buku.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Banner Ringkasan -->
-                <div class="p-8 bg-gradient-to-r from-indigo-900/40 to-slate-900 rounded-3xl border border-indigo-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-white text-xl">Ingin Melanjutkan Eksplorasi?</h4>
-                        <p class="text-xs text-slate-300">Lanjutkan membaca ke bab unsur-unsur pembentuk desain visual.</p>
-                    </div>
-                    <button onclick="navigateTo('unsur')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition-all shrink-0">
-                        Ke Halaman Unsur DKV &rarr;
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- HALAMAN 3: UNSUR-UNSUR DKV -->
-        <section id="page-unsur" class="page-section py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div class="border-b border-slate-800 pb-6">
-                    <span class="text-purple-400 text-xs font-bold uppercase tracking-widest">Halaman 02</span>
-                    <h2 class="text-3xl font-black text-white mt-1">Unsur-Unsur DKV</h2>
-                    <p class="text-slate-400 text-sm mt-1">Elemen-elemen fisikal & konseptual yang membentuk struktur karya visual.</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Unsur Garis -->
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-white text-lg">1. Garis (Line)</h3>
-                            <span class="p-2 bg-purple-500/10 text-purple-400 rounded-lg"><i data-lucide="minus" class="w-5 h-5"></i></span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Hubungan dua titik yang membentuk arah. Garis tegas menunjukkan keberanian, sedangkan garis melengkung memberikan kesan dinamis dan lemas.
-                        </p>
-                    </div>
-
-                    <!-- Unsur Bidang -->
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-white text-lg">2. Bidang (Shape)</h3>
-                            <span class="p-2 bg-purple-500/10 text-purple-400 rounded-lg"><i data-lucide="square" class="w-5 h-5"></i></span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Area dua dimensi terlindung oleh garis pembatas. Bidang terbagi menjadi geometris (lingkaran, segitiga) dan organik (bentuk alam bebas).
-                        </p>
-                    </div>
-
-                    <!-- Unsur Warna -->
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-white text-lg">3. Warna (Color)</h3>
-                            <span class="p-2 bg-purple-500/10 text-purple-400 rounded-lg"><i data-lucide="palette" class="w-5 h-5"></i></span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Elemen psikologis penarik perhatian paling kuat. Meliputi teori warna RGB untuk layar digital dan CMYK untuk media cetak fisik.
-                        </p>
-                    </div>
-
-                    <!-- Unsur Tipografi -->
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-white text-lg">4. Tipografi (Typography)</h3>
-                            <span class="p-2 bg-purple-500/10 text-purple-400 rounded-lg"><i data-lucide="type" class="w-5 h-5"></i></span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Seni menata huruf agar teks terbaca jelas dan menyampaikan karakter visual tertentu (Serif, Sans Serif, Monospace, Script).
-                        </p>
-                    </div>
-
-                    <!-- Unsur Tekstur -->
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-white text-lg">5. Tekstur (Texture)</h3>
-                            <span class="p-2 bg-purple-500/10 text-purple-400 rounded-lg"><i data-lucide="layers" class="w-5 h-5"></i></span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Tampilan permukaan objek yang memberi persepsi rabaan (kasar, halus, mengkilap, matte) baik secara nyata maupun visual imitasi.
-                        </p>
-                    </div>
-
-                    <!-- Unsur Ruang/Ruang Kosong -->
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-white text-lg">6. Ruang Kosong (Space)</h3>
-                            <span class="p-2 bg-purple-500/10 text-purple-400 rounded-lg"><i data-lucide="maximize" class="w-5 h-5"></i></span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Sering disebut *White Space/Negative Space*, elemen ruang memberikan kesempatan pandangan mata untuk beristirahat dan tidak padat.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HALAMAN 4: PRINSIP-PRINSIP DESAIN -->
-        <section id="page-prinsip" class="page-section py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div class="border-b border-slate-800 pb-6">
-                    <span class="text-pink-400 text-xs font-bold uppercase tracking-widest">Halaman 03</span>
-                    <h2 class="text-3xl font-black text-white mt-1">Prinsip-Prinsip Desain</h2>
-                    <p class="text-slate-400 text-sm mt-1">Kaidah tata letak untuk menyusun unsur-unsur visual agar harmonis.</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 flex items-start space-x-4">
-                        <div class="p-3 bg-pink-500/10 text-pink-400 rounded-xl shrink-0">
-                            <i data-lucide="scale" class="w-6 h-6"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-white text-base">Keseimbangan (Balance)</h3>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Pembagian bobot visual pada tata letak. Terdiri dari *Simetris* (formal & stabil) dan *Asimetris* (dinamis & modern).
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 flex items-start space-x-4">
-                        <div class="p-3 bg-pink-500/10 text-pink-400 rounded-xl shrink-0">
-                            <i data-lucide="eye" class="w-6 h-6"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-white text-base">Penekanan (Emphasis / Focal Point)</h3>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Elemen utama yang memancing perhatian mata pertama kali saat melihat sebuah karya (point of interest).
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 flex items-start space-x-4">
-                        <div class="p-3 bg-pink-500/10 text-pink-400 rounded-xl shrink-0">
-                            <i data-lucide="repeat" class="w-6 h-6"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-white text-base">Irama & Pengulangan (Rhythm)</h3>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Pengulangan konsisten dari unsur garis, bentuk, atau warna untuk menciptakan alur gerakan pandangan yang teratur.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 flex items-start space-x-4">
-                        <div class="p-3 bg-pink-500/10 text-pink-400 rounded-xl shrink-0">
-                            <i data-lucide="component" class="w-6 h-6"></i>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-white text-base">Kesatuan (Unity / Harmony)</h3>
-                            <p class="text-xs text-slate-400 leading-relaxed">
-                                Keterikatan antar seluruh komponen desain hingga menghasilkan kesatuan pesan tanpa ada elemen yang saling bertabrakan.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HALAMAN 5: ELEMEN BRANDING -->
-        <section id="page-branding" class="page-section py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div class="border-b border-slate-800 pb-6">
-                    <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Halaman 04</span>
-                    <h2 class="text-3xl font-black text-white mt-1">Elemen Branding</h2>
-                    <p class="text-slate-400 text-sm mt-1">Komponen visual penyusun identitas merek produk atau perusahaan.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-                        <div class="p-3 w-fit bg-emerald-500/10 text-emerald-400 rounded-xl">
-                            <i data-lucide="box" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">1. Logo & Mark</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Simbol utama penyampai identitas merek. Terbagi atas Logotype (huruf) atau Logomark (ikon grafis simbolis).
-                        </p>
-                    </div>
-
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-                        <div class="p-3 w-fit bg-emerald-500/10 text-emerald-400 rounded-xl">
-                            <i data-lucide="droplet" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">2. Palette Warna Merek</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Kombinasi warna utama dan sekunder khusus yang konsisten dipakai pada seluruh kampanye promosi merek.
-                        </p>
-                    </div>
-
-                    <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
-                        <div class="p-3 w-fit bg-emerald-500/10 text-emerald-400 rounded-xl">
-                            <i data-lucide="book-open" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-bold text-white text-base">3. Brand Guideline (GSM)</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Buku panduan standar grafis (*Graphic Standard Manual*) penyimpan aturan jarak aman logo, warna standar, dan tipografi.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HALAMAN 6: ALUR KOMUNIKASI VISUAL -->
-        <section id="page-alur" class="page-section py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div class="border-b border-slate-800 pb-6">
-                    <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Halaman 05</span>
-                    <h2 class="text-3xl font-black text-white mt-1">Alur Komunikasi Visual</h2>
-                    <p class="text-slate-400 text-sm mt-1">Tahapan pengiriman pesan dari desainer sampai dipahami oleh audiens.</p>
-                </div>
-
-                <!-- Timeline Alur Komunikasi -->
-                <div class="relative border-l-2 border-slate-800 ml-4 md:ml-8 space-y-8 py-4">
-                    <!-- Step 1 -->
-                    <div class="relative pl-6 md:pl-10">
-                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 ring-4 ring-slate-950"></div>
-                        <h3 class="font-bold text-white text-lg">1. Pengirim Pesan (Communicator / Client)</h3>
-                        <p class="text-xs text-slate-400 mt-1">Pihak klien atau desainer yang membawa pesan dasar dan tujuan utama kampanye komunikasi.</p>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="relative pl-6 md:pl-10">
-                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 ring-4 ring-slate-950"></div>
-                        <h3 class="font-bold text-white text-lg">2. Enkodifikasi Pesan Visual (Encoding)</h3>
-                        <p class="text-xs text-slate-400 mt-1">Proses penerjemahan ide/gagasan menjadi simbol grafis, ilustrasi, warna, dan susunan layout.</p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="relative pl-6 md:pl-10">
-                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-pink-500 ring-4 ring-slate-950"></div>
-                        <h3 class="font-bold text-white text-lg">3. Saluran Media (Media Channel)</h3>
-                        <p class="text-xs text-slate-400 mt-1">Wadah penyampaian karya visual seperti baliho fisik, majalah cetak, situs web, atau media sosial.</p>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="relative pl-6 md:pl-10">
-                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-950"></div>
-                        <h3 class="font-bold text-white text-lg">4. Penerima Pesan (Communicatee / Target Audience)</h3>
-                        <p class="text-xs text-slate-400 mt-1">Audiens sasaran yang menafsirkan (*decoding*) simbol-simbol visual yang dilihatnya.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HALAMAN 7: TOOLS DESAIN (DIPERBARUI) -->
-        <section id="page-tools" class="page-section py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-                <div class="border-b border-slate-800 pb-6">
-                    <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Halaman 06</span>
-                    <h2 class="text-3xl font-black text-white mt-1">Tools & Software Desain Lengkap</h2>
-                    <p class="text-slate-400 text-sm mt-1">Aplikasi dan perangkat keras standar industri yang digunakan desainer komunikasi visual modern.</p>
-                </div>
-
-                <!-- Kategori 1: Pengolah Vektor & Branding -->
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-2 text-cyan-400">
-                        <i data-lucide="pen-tool" class="w-5 h-5"></i>
-                        <h3 class="font-bold text-lg text-white">1. Pengolah Vektor & Branding</h3>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center font-bold">Ai</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Adobe Illustrator</h4>
-                                    <p class="text-[10px] text-slate-500">Standar Industri Vektor</p>
-                                </div>
+                        <div class="h-56 rounded-lg bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white relative overflow-hidden group">
+                            <i data-lucide="shapes" class="w-24 h-24 opacity-20 transform group-hover:scale-110 transition duration-500"></i>
+                            <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center p-4 text-center">
+                                <h3 class="text-2xl font-bold mb-1">Visual Communication</h3>
+                                <p class="text-xs text-slate-200">Kreativitas × Strategi × Estetika</p>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Aplikasi utama pembuat logo, ikon, maskot, tipografi kustom, dan ilustrasi berbasis grafik vektor yang tidak akan pecah saat diperbesar.</p>
                         </div>
-
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold">CDR</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">CorelDRAW</h4>
-                                    <p class="text-[10px] text-slate-500">Favorit Industri Percetakan</p>
-                                </div>
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="p-2 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                                <span class="block font-bold text-slate-700 dark:text-slate-200">7</span> Unsur
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Sangat populer di dunia industri percetakan lokal untuk kebutuhan cetak spanduk, stiker, kemasan, banner, dan merchandise.</p>
-                        </div>
-
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-cyan-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-orange-500/10 text-orange-400 rounded-xl flex items-center justify-center font-bold">Ink</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Inkscape</h4>
-                                    <p class="text-[10px] text-slate-500">Alternatif Vektor Gratis (Open Source)</p>
-                                </div>
+                            <div class="p-2 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                                <span class="block font-bold text-slate-700 dark:text-slate-200">7</span> Prinsip
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Software grafis vektor berbasis koded sumber terbuka yang powerful dan dapat diakses secara bebas tanpa biaya lisensi.</p>
+                            <div class="p-2 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                                <span class="block font-bold text-slate-700 dark:text-slate-200">6</span> Tahap Alur
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Kategori 2: Manipulasi Foto & Raster -->
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-2 text-blue-400">
+    <!-- SECTION 1: Unsur-Unsur DKV -->
+    <section id="unsur" class="py-20 bg-slate-100/50 dark:bg-slate-800/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Unsur-Unsur Dasar DKV</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Elemen fisik dasar yang digunakan desainer untuk menyusun susunan komposisi visual.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: Garis -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-200/80 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-4">
+                        <i data-lucide="minus" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">1. Garis (Line)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Menghubungkan dua titik. Digunakan untuk memberi arah, membagi ruang, atau menciptakan tekstur visual (lurus, lengkung, putus-putus).</p>
+                </div>
+
+                <!-- Card 2: Bentuk -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-200/80 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                        <i data-lucide="square" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">2. Bentuk (Shape)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Area 2 dimensi berpembatas. Bisa bersifat Geometris (lingkaran, persegi) maupun Organik (bentuk alam bebas).</p>
+                </div>
+
+                <!-- Card 3: Warna -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-200/80 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
+                        <i data-lucide="droplet" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">3. Warna (Color)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Menciptakan emosi dan daya tarik. Terdiri dari Hue, Saturation, dan Value (CMYK untuk cetak, RGB untuk layar).</p>
+                </div>
+
+                <!-- Card 4: Tipografi -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-200/80 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4">
+                        <i data-lucide="type" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">4. Tipografi (Typography)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Seni menata huruf agar teks terbaca jelas dan menyampaikan karakter tertentu (Serif, Sans-serif, Script).</p>
+                </div>
+
+                <!-- Card 5: Tekstur -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-200/80 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-xl bg-rose-50 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">5. Tekstur (Texture)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Kualitas permukaan visual yang memberikan kesan rabaan (kasar, halus, mengkilap, pola kayu) secara ilusi.</p>
+                </div>
+
+                <!-- Card 6: Ruang -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-200/80 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 flex items-center justify-center mb-4">
+                        <i data-lucide="maximize" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">6. Ruang (Space)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Area di sekitar/di antara elemen. Negative space (ruang kosong) penting agar desain bernapas dan fokus.</p>
+                </div>
+
+                <!-- Card 7: Value / Gelap Terang -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-slate-200/80 dark:border-slate-700 lg:col-span-2">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
+                        <i data-lucide="sun-medium" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">7. Gelap Terang (Value)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Tingkat kecerahan atau kegelapan warna. Digunakan untuk menciptakan kedalaman, dimensi 3D, serta fokus perhatian dalam komposisi visual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Prinsip Desain -->
+    <section id="prinsip" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Prinsip-Prinsip Desain</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Aturan dasar pengelolaan unsur visual agar menghasilkan desain yang harmonis dan efektif.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
+                    <div class="text-brand-600 font-extrabold text-2xl">01</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Keseimbangan (Balance)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Pembagian bobot visual elemen. Bisa simetris (seimbang sama) atau asimetris (seimbang secara kontras dinamis).</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
+                    <div class="text-brand-600 font-extrabold text-2xl">02</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Kontras (Contrast)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Perbedaan mencolok antar elemen (besar-kecil, terang-gelap) untuk menarik perhatian dan membedakan informasi.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
+                    <div class="text-brand-600 font-extrabold text-2xl">03</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Penekanan (Emphasis)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Focal point atau bagian pusat perhatian utama yang pertama kali dilihat oleh audiens dalam suatu karya.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
+                    <div class="text-brand-600 font-extrabold text-2xl">04</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Irama (Rhythm / Repetition)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Pengulangan elemen visual yang teratur untuk menciptakan kesan gerak, konsistensi, dan pola visual.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
+                    <div class="text-brand-600 font-extrabold text-2xl">05</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Kesatuan (Unity / Harmony)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Hubungan saling mendukung antar seluruh elemen desain sehingga karya terasa utuh dan terintegrasi.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700">
+                    <div class="text-brand-600 font-extrabold text-2xl">06</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Proporsi (Proportion)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Hubungan perbandingan ukuran atau jumlah antar satu elemen dengan elemen lainnya secara harmonis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Elemen Branding -->
+    <section id="branding" class="py-20 bg-slate-100/50 dark:bg-slate-800/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Elemen Branding Visual</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Komponen utama dalam membangun identitas visual merk (Brand Identity) yang kuat.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Logo -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-brand-50 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                        <i data-lucide="shield" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">1. Logo & Symbol</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Wajah utama identitas brand. Terdiri dari Logotype (teks), Logomark (simbol), atau kombinasi keduanya.</p>
+                </div>
+
+                <!-- Color Palette -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                        <i data-lucide="palette" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">2. Palet Warna Brand</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Kombinasi warna khusus yang mencerminkan psikologi, nilai, dan emosi dari sebuah merk secara konsisten.</p>
+                </div>
+
+                <!-- Brand Typography -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                        <i data-lucide="case-sensitive" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">3. Tipografi Khas</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Pemilihan *font family* utama dan sekunder yang digunakan di seluruh media promosi dan produk brand.</p>
+                </div>
+
+                <!-- Imagery Style -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                         <i data-lucide="image" class="w-5 h-5"></i>
-                        <h3 class="font-bold text-lg text-white">2. Manipulasi Foto & Grafis Raster</h3>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-blue-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center font-bold">Ps</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Adobe Photoshop</h4>
-                                    <p class="text-[10px] text-slate-500">Editing Foto & Poster</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Penyunting gambar piksel nomor satu untuk manipulasi foto, retouching, efek visual, pembuatan mock-up, dan poster digital.</p>
-                        </div>
+                    <h3 class="text-xl font-bold">4. Gaya Citra (Imagery)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Gaya fotografi, ilustrasi, atau grafis khas yang ditentukan untuk menjaga konsistensi nuansa visual.</p>
+                </div>
 
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-blue-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center font-bold">Af</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Affinity Photo</h4>
-                                    <p class="text-[10px] text-slate-500">Alternatif Profesional Photoshop</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Software foto editor profesional bebas biaya berlangganan bulanan dengan performa tinggi untuk fotografer dan desainer.</p>
-                        </div>
+                <!-- Brand Voice / Graphic Supergraphic -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-rose-50 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+                        <i data-lucide="sparkle" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">5. Elemen Supergrafis</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Pola, garis, atau bentuk dekoratif pendukung yang diturunkan dari bentuk logo untuk memperkuat identitas.</p>
+                </div>
 
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-blue-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-slate-700/50 text-slate-300 rounded-xl flex items-center justify-center font-bold">Gimp</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">GIMP</h4>
-                                    <p class="text-[10px] text-slate-500">Editing Foto Open Source</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Perangkat penyunting piksel foto gratisan yang ringan untuk memotong gambar, koreksi warna, dan retouching sederhana.</p>
-                        </div>
+                <!-- Brand Guidelines -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                        <i data-lucide="book-open" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">6. Brand Guidelines (GSM)</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Buku panduan aturan penggunaan logo, warna, dan seluruh aset visual (*Graphic Standard Manual*).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Alur Kerja DKV -->
+    <section id="alur" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Alur Komunikasi Visual</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Proses rinci dalam mengubah masalah komunikasi menjadi solusi visual yang berhasil.</p>
+            </div>
+
+            <div class="relative border-l-2 border-brand-200 dark:border-brand-900 ml-4 md:ml-32 space-y-12">
+                <!-- Step 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">1</div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Tahap 01</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Penerimaan Brief & Problem Definition</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Memahami kebutuhan klien, target audiens, pesan utama yang ingin disampaikan, serta batasan media/anggaran.</p>
                     </div>
                 </div>
 
-                <!-- Kategori 3: UI/UX & Layout Publikasi -->
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-2 text-purple-400">
-                        <i data-lucide="layout" class="w-5 h-5"></i>
-                        <h3 class="font-bold text-lg text-white">3. Desain UI/UX & Layout Publikasi</h3>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-pink-500/10 text-pink-400 rounded-xl flex items-center justify-center font-bold">Fg</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Figma</h4>
-                                    <p class="text-[10px] text-slate-500">UI/UX & Prototyping Kolaboratif</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Platform desain berbasis web utama untuk merancang antarmuka aplikasi seluler, website, prototyping interaktif, dan kolaborasi langsung.</p>
-                        </div>
-
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-pink-600/10 text-pink-500 rounded-xl flex items-center justify-center font-bold">Id</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Adobe InDesign</h4>
-                                    <p class="text-[10px] text-slate-500">Tata Letak Majalah & Buku</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Dikhususkan untuk menyusun layout dokumen halaman banyak seperti e-book, brosur lipat, majalah, koran, dan katalog produk.</p>
-                        </div>
-
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-purple-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-purple-600/10 text-purple-400 rounded-xl flex items-center justify-center font-bold">Xd</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Adobe XD</h4>
-                                    <p class="text-[10px] text-slate-500">UI/UX Prototype</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Aplikasi buatan Adobe untuk perancangan alur pengalaman pengguna (user experience) dan wireframe aplikasi digital.</p>
-                        </div>
+                <!-- Step 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">2</div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Tahap 02</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Riset & Brainstorming (Ideation)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Mengumpulkan referensi visual, membuat *Moodboard*, pemetaan pikiran (*mind mapping*), dan menentukan konsep kreatif.</p>
                     </div>
                 </div>
 
-                <!-- Kategori 4: Motion Graphics, 3D & Ilustrasi Digital -->
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-2 text-rose-400">
-                        <i data-lucide="video" class="w-5 h-5"></i>
-                        <h3 class="font-bold text-lg text-white">4. Motion Graphics, 3D & Sketsa Digital</h3>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-rose-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold">Ae</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Adobe After Effects</h4>
-                                    <p class="text-[10px] text-slate-500">Motion Graphics & Visual Effects</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Digunakan untuk membuat animasi logo, grafis bergerak (motion graphics), efek visual video iklan, dan bumper animasi.</p>
-                        </div>
-
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-rose-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-orange-600/10 text-orange-500 rounded-xl flex items-center justify-center font-bold">Bl</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Blender 3D</h4>
-                                    <p class="text-[10px] text-slate-500">Pemodelan & Animasi 3D</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Software 3D gratis serbaguna untuk pemodelan produk, animasi 3D, rendering arsitektur, dan aset gim modern.</p>
-                        </div>
-
-                        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 space-y-3 hover:border-rose-500/30 transition-all">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-slate-700/50 text-slate-200 rounded-xl flex items-center justify-center font-bold">Pr</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Procreate</h4>
-                                    <p class="text-[10px] text-slate-500">Ilustrasi Tablet / iPad</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Aplikasi lukis & ilustrasi digital terpopuler untuk seniman komik, konseptual artist, dan desainer karakter pada tablet.</p>
-                        </div>
+                <!-- Step 3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">3</div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Tahap 03</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Sketsa & Drafting (Sketsa Kasar)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Membuat sketsa manual di kertas (*thumbnail sketch*) untuk mengeksplorasi susunan tata letak dan bentuk gagasan secara cepat.</p>
                     </div>
                 </div>
 
-                <!-- Perangkat Keras Tambahan (Hardware Tools) -->
-                <div class="p-6 bg-slate-900/80 rounded-2xl border border-slate-800 space-y-4">
-                    <h4 class="font-bold text-white text-sm flex items-center gap-2">
-                        <i data-lucide="laptop" class="w-4 h-4 text-indigo-400"></i> Perangkat Keras (Hardware) Pendukung DKV
-                    </h4>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs text-slate-400">
-                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
-                            <span class="font-bold text-white block mb-1">Pen Tablet / Display</span>
-                            Wacom, Huion, XP-Pen untuk melukis & sketsa digital secara presisi.
-                        </div>
-                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
-                            <span class="font-bold text-white block mb-1">Kamera DSLR / Mirrorless</span>
-                            Untuk dokumentasi fotografi, pengambilan stok foto, dan perekaman video.
-                        </div>
-                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
-                            <span class="font-bold text-white block mb-1">Monitor Akurasi Warna</span>
-                            Layar berpanel IPS dengan cakupan sRGB/DCI-P3 99%+ untuk warna yang akurat.
-                        </div>
-                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
-                            <span class="font-bold text-white block mb-1">Color Calibration Tool</span>
-                            Alat kalibrasi layar (seperti SpyderX) agar warna di layar sesuai dengan hasil cetak.
-                        </div>
+                <!-- Step 4 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">4</div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Tahap 04</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Eksekusi Digital & Prototipe</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Memindahkan sketsa terpilih ke perangkat lunak komputer/vektor, penerapan warna, tipografi, serta penyempurnaan detail.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">5</div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Tahap 05</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Presentasi & Revisi (Feedback)</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Mempresentasikan hasil desain kepada klien, mendengarkan masukan, dan melakukan perbaikan yang diperlukan.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-3 top-1 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">6</div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">Tahap 06</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">Final Production & Handover</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Penyiapan berkas siap cetak (PDF High-res, CMYK) atau penyiapan aset digital (PNG, SVG, Web-ready RGB).</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- HALAMAN 8: HASIL KARYA / PORTOFOLIO -->
-        <section id="page-karya" class="page-section py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div class="border-b border-slate-800 pb-6">
-                    <span class="text-rose-400 text-xs font-bold uppercase tracking-widest">Halaman 07</span>
-                    <h2 class="text-3xl font-black text-white mt-1">Galeri Hasil Karya DKV</h2>
-                    <p class="text-slate-400 text-sm mt-1">Contoh implementasi nyata output desain komunikasi visual di masyarakat.</p>
+    <!-- SECTION 5: Tools Desain -->
+    <section id="tools" class="py-20 bg-slate-100/50 dark:bg-slate-800/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Software & Tools DKV</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Perangkat lunak industri populer yang digunakan oleh desainer profesional.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Vektor -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                    <div class="text-brand-600 dark:text-brand-400 font-bold text-sm uppercase tracking-wider mb-2">Desain Vektor</div>
+                    <h3 class="text-xl font-bold mb-4">Logo & Ilustrasi</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Adobe Illustrator</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> CorelDRAW</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Affinity Designer</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Inkscape (Free)</li>
+                    </ul>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 group">
-                        <div class="h-48 overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-5 space-y-2">
-                            <span class="text-[10px] bg-rose-500/10 text-rose-400 px-2 py-1 rounded-full font-bold">Branding</span>
-                            <h3 class="font-bold text-white text-sm">Identitas Visual Perusahaan</h3>
-                            <p class="text-xs text-slate-400">Desain logo, kartu nama, dan panduan merek korporat.</p>
-                        </div>
-                    </div>
+                <!-- Raster -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                    <div class="text-amber-600 dark:text-amber-400 font-bold text-sm uppercase tracking-wider mb-2">Manipulasi Foto</div>
+                    <h3 class="text-xl font-bold mb-4">Raster & Edits</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Adobe Photoshop</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Procreate (iPad)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Affinity Photo</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> GIMP (Free)</li>
+                    </ul>
+                </div>
 
-                    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 group">
-                        <div class="h-48 overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-5 space-y-2">
-                            <span class="text-[10px] bg-rose-500/10 text-rose-400 px-2 py-1 rounded-full font-bold">Poster</span>
-                            <h3 class="font-bold text-white text-sm">Poster Iklan Kampanye Sosial</h3>
-                            <p class="text-xs text-slate-400">Karya publikasi edukasi kesehatan dan perlindungan lingkungan.</p>
-                        </div>
-                    </div>
+                <!-- UI/UX & Layout -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                    <div class="text-purple-600 dark:text-purple-400 font-bold text-sm uppercase tracking-wider mb-2">Digital & Layout</div>
+                    <h3 class="text-xl font-bold mb-4">UI/UX & Publikasi</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Figma</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Adobe InDesign</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Adobe XD</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Canva</li>
+                    </ul>
+                </div>
 
-                    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 group">
-                        <div class="h-48 overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="p-5 space-y-2">
-                            <span class="text-[10px] bg-rose-500/10 text-rose-400 px-2 py-1 rounded-full font-bold">Digital App</span>
-                            <h3 class="font-bold text-white text-sm">Desain Antarmuka Aplikasi (UI/UX)</h3>
-                            <p class="text-xs text-slate-400">Aplikasi seluler dengan tata letak visual interaktif yang ramah pengguna.</p>
-                        </div>
+                <!-- Motion & 3D -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+                    <div class="text-rose-600 dark:text-rose-400 font-bold text-sm uppercase tracking-wider mb-2">Animasi & 3D</div>
+                    <h3 class="text-xl font-bold mb-4">Motion & Modeling</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Adobe After Effects</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Blender (3D)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Cinema 4D</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i> Premiere Pro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Hasil Karya DKV -->
+    <section id="karya" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Galeri Hasil Karya DKV</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Contoh penerapan hasil cabang keilmuan DKV dalam portofolio nyata.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="galleryFilters">
+                <button data-filter="all" class="px-4 py-2 rounded-xl bg-brand-600 text-white text-sm font-medium transition filter-btn">Semua</button>
+                <button data-filter="branding" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white text-sm font-medium transition filter-btn">Branding</button>
+                <button data-filter="typography" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white text-sm font-medium transition filter-btn">Tipografi</button>
+                <button data-filter="uiux" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white text-sm font-medium transition filter-btn">UI/UX Design</button>
+                <button data-filter="illustration" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white text-sm font-medium transition filter-btn">Ilustrasi</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+                <!-- Item 1: Branding -->
+                <div class="gallery-item branding group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Brand Identity Kopi Minimalis', 'Branding', 'Penerapan identitas visual menyeluruh pada kemasan, logo, dan panduan warna produk kopi.', 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">Branding</span>
+                        <h3 class="text-lg font-bold">Brand Identity Kopi Minimalis</h3>
+                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Typography -->
+                <div class="gallery-item typography group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Poster Tipografi Eksperimental', 'Tipografi', 'Eksplorasi susunan huruf dan susunan hierarki visual majalah seni.', 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">Tipografi</span>
+                        <h3 class="text-lg font-bold">Poster Tipografi Eksperimental</h3>
+                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: UI/UX -->
+                <div class="gallery-item uiux group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Aplikasi Mobile Edukasi', 'UI/UX Design', 'Perancangan antarmuka pengguna yang ramah pengguna dengan skema warna yang nyaman.', 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80" alt="[Image of Desain UI/UX Mobile]" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">UI/UX Design</span>
+                        <h3 class="text-lg font-bold">Aplikasi Mobile Edukasi</h3>
+                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Illustration -->
+                <div class="gallery-item illustration group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Ilustrasi Vektor Editorial', 'Ilustrasi', 'Karya ilustrasi konseptual untuk artikel majalah teknologi modern.', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">Ilustrasi</span>
+                        <h3 class="text-lg font-bold">Ilustrasi Vektor Editorial</h3>
+                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Branding -->
+                <div class="gallery-item branding group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Desain Kemasan Organic Skincare', 'Branding', 'Kemasan produk ramah lingkungan dengan elemen grafis alami dan elegan.', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">Branding</span>
+                        <h3 class="text-lg font-bold">Desain Kemasan Skincare</h3>
+                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: UI/UX -->
+                <div class="gallery-item uiux group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Dashboard Analytics Web', 'UI/UX Design', 'Perancangan tata letak data kompleks agar mudah dipahami secara visual.', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="[Image of UI Dashboard Web]" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">UI/UX Design</span>
+                        <h3 class="text-lg font-bold">Dashboard Analytics Web</h3>
+                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- Modal Popup Karya -->
+    <div id="karyaModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 relative animate-fadeIn">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <img id="modalImg" src="" alt="Detail Karya" class="w-full h-72 object-cover">
+            <div class="p-6">
+                <span id="modalCategory" class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider"></span>
+                <h3 id="modalTitle" class="text-2xl font-bold mt-1 mb-3"></h3>
+                <p id="modalDesc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"></p>
+                <div class="mt-6 flex justify-end">
+                    <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-sm">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-xs text-slate-500">
-        <p>&copy; 2026 E-Learning Desain Komunikasi Visual (DKV). Modul Edukasi Interaktif.</p>
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <a href="#" class="inline-flex items-center gap-2 font-bold text-xl text-white">
+                <i data-lucide="palette" class="w-6 h-6 text-brand-500"></i>
+                <span>DKV<span class="text-accent">Space</span></span>
+            </a>
+            <p class="text-sm max-w-md mx-auto">Platform media edukasi seputar Desain Komunikasi Visual untuk pelajar, mahasiswa, dan praktisi kreatif.</p>
+            <div class="pt-4 border-t border-slate-800 text-xs text-slate-500">
+                &copy; 2026 DKVSpace. Seluruh Hak Cipta Dilindungi.
+            </div>
+        </div>
     </footer>
 
-    <!-- Script Navigasi SPA (Single Page Application) -->
+    <!-- Script Interaction -->
     <script>
-        function navigateTo(pageId) {
-            // Sembunyikan semua halaman
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => page.classList.remove('active'));
+        // Lucide Icons Initialization
+        lucide.createIcons();
 
-            // Tampilkan halaman tujuan
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) {
-                targetPage.classList.add('active');
+        // Dark / Light Mode Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const darkIcon = document.getElementById('darkIcon');
+        const lightIcon = document.getElementById('lightIcon');
+
+        // Check initial theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            lightIcon.classList.add('hidden');
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
             }
+        });
 
-            // Update status tombol navigasi desktop
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => {
-                if (btn.getAttribute('data-page') === pageId) {
-                    btn.classList.add('bg-indigo-600', 'text-white');
-                    btn.classList.remove('text-slate-300');
-                } else {
-                    btn.classList.remove('bg-indigo-600', 'text-white');
-                    btn.classList.add('text-slate-300');
-                }
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
             });
+        });
 
-            // Tutup menu mobile jika terbuka
-            document.getElementById('mobile-menu').classList.add('hidden');
+        // Gallery Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-            // Scroll ke bagian atas
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button style
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-600', 'text-white');
+                    b.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+                btn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                btn.classList.add('bg-brand-600', 'text-white');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('karyaModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCategory = document.getElementById('modalCategory');
+        const modalDesc = document.getElementById('modalDesc');
+
+        function openModal(title, category, desc, imgSrc) {
+            modalTitle.textContent = title;
+            modalCategory.textContent = category;
+            modalDesc.textContent = desc;
+            modalImg.src = imgSrc;
+            modal.classList.remove('hidden');
         }
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        function closeModal() {
+            modal.classList.add('hidden');
         }
 
-        // Inisialisasi Ikon Lucide
-        window.onload = function() {
-            lucide.createIcons();
-        };
+        // Close modal on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
-
-
+```
