@@ -110,22 +110,37 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Kartu Profil DKV -->
                 <div class="relative flex justify-center">
                     <div class="absolute -top-10 -bottom-10 -left-10 -right-10 bg-gradient-to-tr from-brand-500/20 to-accent/20 rounded-full filter blur-3xl -z-10"></div>
-                    <div class="w-full max-w-md bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
+                    <div class="w-full max-w-md bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 space-y-5">
+                        
+                        <!-- Header Artboard -->
                         <div class="flex items-center gap-3 border-b border-slate-100 dark:border-slate-700 pb-3">
                             <div class="w-3 h-3 rounded-full bg-red-500"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="text-xs text-slate-400 ml-auto font-mono">artboard_v1.ai</span>
+                            <span class="text-xs text-slate-400 ml-auto font-mono">profile_designer.ai</span>
                         </div>
-                        <div class="h-56 rounded-lg bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white relative overflow-hidden group">
-                            <i data-lucide="shapes" class="w-24 h-24 opacity-20 transform group-hover:scale-110 transition duration-500"></i>
-                            <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center p-4 text-center">
-                                <h3 class="text-2xl font-bold mb-1">Visual Communication</h3>
-                                <p class="text-xs text-slate-200">Kreativitas × Strategi × Estetika</p>
+
+                        <!-- Foto Profil & Detail -->
+                        <div class="flex flex-col items-center text-center p-4 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                            <div class="relative mb-4 group">
+                                <div class="absolute -inset-1 bg-gradient-to-r from-brand-600 to-accent rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                                <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787186624_629ed062.jpg" 
+                                     alt="" 
+                                     class="relative w-32 h-32 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-md">
+                                <span class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full" title="Status Aktif"></span>
                             </div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100">Alza Wijaya</h3>
+                            <p class="text-xs text-brand-600 dark:text-brand-400 font-medium mt-0.5">Siswa Desain Komunikasi Visual</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 max-w-xs">
+                                Fokus pada Desain Grafis, Branding, dan Media Digital Interaktif.
+                            </p>
                         </div>
+
+                        <!-- Statistika Singkat -->
                         <div class="grid grid-cols-3 gap-2 text-center text-xs">
                             <div class="p-2 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
                                 <span class="block font-bold text-slate-700 dark:text-slate-200">7</span> Unsur
@@ -134,9 +149,10 @@
                                 <span class="block font-bold text-slate-700 dark:text-slate-200">7</span> Prinsip
                             </div>
                             <div class="p-2 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                                <span class="block font-bold text-slate-700 dark:text-slate-200">6</span> Tahap Alur
+                                <span class="block font-bold text-slate-700 dark:text-slate-200">6</span> Alur Kerja
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -481,12 +497,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Galeri Hasil Karya DKV</h2>
-                <p class="mt-4 text-slate-600 dark:text-slate-400">Contoh penerapan hasil cabang keilmuan DKV dalam portofolio nyata.</p>
+                <p class="mt-4 text-slate-600 dark:text-slate-400">Portofolio karya desain karya Alza Wijaya dalam berbagai cabang keilmuan DKV.</p>
             </div>
 
             <!-- Filter Buttons -->
             <div class="flex flex-wrap justify-center gap-2 mb-10" id="galleryFilters">
-                <button data-filter="all" class="px-4 py-2 rounded-xl bg-brand-600 text-white text-sm font-medium transition filter-btn">Semua</button>
+                <button data-filter="all" class="px-4 py-2 rounded-xl bg-brand-600 text-white text-sm font-medium transition filter-btn">Semua Karya</button>
                 <button data-filter="branding" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white text-sm font-medium transition filter-btn">Branding</button>
                 <button data-filter="typography" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white text-sm font-medium transition filter-btn">Tipografi</button>
                 <button data-filter="uiux" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-500 hover:text-white text-sm font-medium transition filter-btn">UI/UX Design</button>
@@ -495,82 +511,106 @@
 
             <!-- Gallery Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
-                <!-- Item 1: Branding -->
-                <div class="gallery-item branding group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Brand Identity Kopi Minimalis', 'Branding', 'Penerapan identitas visual menyeluruh pada kemasan, logo, dan panduan warna produk kopi.', 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                
+                <!-- Karya 1: Branding -->
+                <div class="gallery-item branding group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-sm hover:shadow-xl transition duration-300" 
+                     onclick="openModal('Karya Desain Visual 01', 'Branding', 'Hasil eksplorasi karya komunikasi visual dengan komposisi warna dan tata letak yang menarik.', 'https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790781_657a1257.jpg.jpg')">
+                    <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790781_657a1257.jpg.jpg" alt="" class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
                         <span class="text-xs font-semibold text-accent uppercase tracking-wider">Branding</span>
-                        <h3 class="text-lg font-bold">Brand Identity Kopi Minimalis</h3>
-                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                        <h3 class="text-lg font-bold">Karya Desain Visual #1</h3>
+                        <p class="text-xs text-slate-300 mt-1">Oleh Alza Wijaya • Klik untuk memperbesar</p>
                     </div>
                 </div>
 
-                <!-- Item 2: Typography -->
-                <div class="gallery-item typography group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Poster Tipografi Eksperimental', 'Tipografi', 'Eksplorasi susunan huruf dan susunan hierarki visual majalah seni.', 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                <!-- Karya 2: Tipografi -->
+                <div class="gallery-item typography group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-sm hover:shadow-xl transition duration-300" 
+                     onclick="openModal('Karya Desain Visual 02', 'Tipografi', 'Penerapan hierarki teks dan estetika tipografi dalam susunan karya grafis.', 'https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790764_9397c028.jpg')">
+                    <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790764_9397c028.jpg" alt="" class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
                         <span class="text-xs font-semibold text-accent uppercase tracking-wider">Tipografi</span>
-                        <h3 class="text-lg font-bold">Poster Tipografi Eksperimental</h3>
-                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                        <h3 class="text-lg font-bold">Karya Desain Visual #2</h3>
+                        <p class="text-xs text-slate-300 mt-1">Oleh Alza Wijaya • Klik untuk memperbesar</p>
                     </div>
                 </div>
 
-                <!-- Item 3: UI/UX -->
-                <div class="gallery-item uiux group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Aplikasi Mobile Edukasi', 'UI/UX Design', 'Perancangan antarmuka pengguna yang ramah pengguna dengan skema warna yang nyaman.', 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80" alt="[Image of Desain UI/UX Mobile]" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                <!-- Karya 3: UI/UX -->
+                <div class="gallery-item uiux group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-sm hover:shadow-xl transition duration-300" 
+                     onclick="openModal('Karya Desain Visual 03', 'UI/UX Design', 'Perancangan elemen grafis interaktif dengan penataan layout intuitif.', 'https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790757_ae6c405e.jpg')">
+                    <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790757_ae6c405e.jpg" alt="" class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
                         <span class="text-xs font-semibold text-accent uppercase tracking-wider">UI/UX Design</span>
-                        <h3 class="text-lg font-bold">Aplikasi Mobile Edukasi</h3>
-                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                        <h3 class="text-lg font-bold">Karya Desain Visual #3</h3>
+                        <p class="text-xs text-slate-300 mt-1">Oleh Alza Wijaya • Klik untuk memperbesar</p>
                     </div>
                 </div>
 
-                <!-- Item 4: Illustration -->
-                <div class="gallery-item illustration group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Ilustrasi Vektor Editorial', 'Ilustrasi', 'Karya ilustrasi konseptual untuk artikel majalah teknologi modern.', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                <!-- Karya 4: Ilustrasi -->
+                <div class="gallery-item illustration group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-sm hover:shadow-xl transition duration-300" 
+                     onclick="openModal('Karya Desain Visual 04', 'Ilustrasi', 'Eksplorasi seni digital ilustrasi dengan karakter dan gaya visual modern.', 'https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790753_af152367.jpg')">
+                    <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790753_af152367.jpg" alt="" class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
                         <span class="text-xs font-semibold text-accent uppercase tracking-wider">Ilustrasi</span>
-                        <h3 class="text-lg font-bold">Ilustrasi Vektor Editorial</h3>
-                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                        <h3 class="text-lg font-bold">Karya Desain Visual #4</h3>
+                        <p class="text-xs text-slate-300 mt-1">Oleh Alza Wijaya • Klik untuk memperbesar</p>
                     </div>
                 </div>
 
-                <!-- Item 5: Branding -->
-                <div class="gallery-item branding group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Desain Kemasan Organic Skincare', 'Branding', 'Kemasan produk ramah lingkungan dengan elemen grafis alami dan elegan.', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                <!-- Karya 5: Branding -->
+                <div class="gallery-item branding group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-sm hover:shadow-xl transition duration-300" 
+                     onclick="openModal('Karya Desain Visual 05', 'Branding', 'Implementasi desain identitas merek pada media aplikasi fisik dan digital.', 'https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790731_cbd6317f.jpg')">
+                    <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790731_cbd6317f.jpg" alt="" class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
                         <span class="text-xs font-semibold text-accent uppercase tracking-wider">Branding</span>
-                        <h3 class="text-lg font-bold">Desain Kemasan Skincare</h3>
-                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                        <h3 class="text-lg font-bold">Karya Desain Visual #5</h3>
+                        <p class="text-xs text-slate-300 mt-1">Oleh Alza Wijaya • Klik untuk memperbesar</p>
                     </div>
                 </div>
 
-                <!-- Item 6: UI/UX -->
-                <div class="gallery-item uiux group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer" onclick="openModal('Dashboard Analytics Web', 'UI/UX Design', 'Perancangan tata letak data kompleks agar mudah dipahami secara visual.', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="[Image of UI Dashboard Web]" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
-                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">UI/UX Design</span>
-                        <h3 class="text-lg font-bold">Dashboard Analytics Web</h3>
-                        <p class="text-xs text-slate-300 mt-1">Klik untuk detail karya</p>
+                <!-- Karya 6: Tipografi -->
+                <div class="gallery-item typography group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-sm hover:shadow-xl transition duration-300" 
+                     onclick="openModal('Karya Desain Visual 06', 'Tipografi', 'Pengolahan komposisi layout dan pengaturan bentuk huruf.', 'https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790722_4e1ed33c.jpg')">
+                    <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790722_4e1ed33c.jpg" alt="" class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">Tipografi</span>
+                        <h3 class="text-lg font-bold">Karya Desain Visual #6</h3>
+                        <p class="text-xs text-slate-300 mt-1">Oleh Alza Wijaya • Klik untuk memperbesar</p>
                     </div>
                 </div>
+
+                <!-- Karya 7: Ilustrasi -->
+                <div class="gallery-item illustration group relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-sm hover:shadow-xl transition duration-300 lg:col-span-1" 
+                     onclick="openModal('Karya Desain Visual 07', 'Ilustrasi', 'Eksplorasi visual dan pengerjaan konsep komunikasi grafis.', 'https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790546_e04dfe35.jpg')">
+                    <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/242510011/1787790546_e04dfe35.jpg" alt="" class="w-full h-72 object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 p-6 flex flex-col justify-end text-white">
+                        <span class="text-xs font-semibold text-accent uppercase tracking-wider">Ilustrasi</span>
+                        <h3 class="text-lg font-bold">Karya Desain Visual #7</h3>
+                        <p class="text-xs text-slate-300 mt-1">Oleh Alza Wijaya • Klik untuk memperbesar</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Modal Popup Karya -->
-    <div id="karyaModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 relative animate-fadeIn">
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition">
+    <div id="karyaModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 relative animate-fadeIn">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 transition">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            <img id="modalImg" src="" alt="Detail Karya" class="w-full h-72 object-cover">
+            <div class="max-h-[70vh] bg-slate-900 flex items-center justify-center overflow-hidden">
+                <img id="modalImg" src="" alt="Detail Karya" class="w-full h-full max-h-[70vh] object-contain">
+            </div>
             <div class="p-6">
-                <span id="modalCategory" class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider"></span>
-                <h3 id="modalTitle" class="text-2xl font-bold mt-1 mb-3"></h3>
+                <div class="flex items-center justify-between">
+                    <span id="modalCategory" class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider"></span>
+                    <span class="text-xs text-slate-400">Karya oleh Alza Wijaya</span>
+                </div>
+                <h3 id="modalTitle" class="text-2xl font-bold mt-1 mb-2"></h3>
                 <p id="modalDesc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"></p>
                 <div class="mt-6 flex justify-end">
-                    <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-sm">Tutup</button>
+                    <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-sm hover:bg-slate-300 dark:hover:bg-slate-600 transition">Tutup Modal</button>
                 </div>
             </div>
         </div>
@@ -585,7 +625,7 @@
             </a>
             <p class="text-sm max-w-md mx-auto">Platform media edukasi seputar Desain Komunikasi Visual untuk pelajar, mahasiswa, dan praktisi kreatif.</p>
             <div class="pt-4 border-t border-slate-800 text-xs text-slate-500">
-                &copy; 2026 DKVSpace. Seluruh Hak Cipta Dilindungi.
+                &copy; 2026 DKVSpace • Portofolio Alza Wijaya. Seluruh Hak Cipta Dilindungi.
             </div>
         </div>
     </footer>
